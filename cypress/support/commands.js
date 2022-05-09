@@ -13,7 +13,7 @@ Cypress.Commands.add("typeWord", (lang, word) => {
   cy.get(`input[name=${lang}]`).type(word);
 });
 
-Cypress.Commands.add("nameButton", (name) => {
+Cypress.Commands.add("getButtonByName", (name) => {
   cy.contains("button", name).click();
 });
 
