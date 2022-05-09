@@ -1,0 +1,22 @@
+{
+  "name": "fiszki_e2e_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaGryska/fiszki_E2E_tests.git"
+  },
+  "author": "Anna Gryska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnaGryska/fiszki_E2E_tests/issues"
+  },
+  "homepage": "https://github.com/AnnaGryska/fiszki_E2E_tests#readme",
+  "devDependencies": {
+    "cypress": "^9.6.0"
+  }
+}
