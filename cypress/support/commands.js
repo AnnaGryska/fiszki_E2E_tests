@@ -1,25 +1,41 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("login", (email, password) => {
+  cy.get("input[name='email']").type(email);
+  cy.get("input[name='password']").type(password);
+  cy.contains("button", "SIGN IN").click();
+});
+
+Cypress.Commands.add("logout", () => {
+  cy.get("[data-cy=hamburger-menu").click();
+  cy.contains("a", "Log out").click();
+});
+
+Cypress.Commands.add("typeWord", (lang, word) => {
+  cy.get(`input[name=${lang}]`).type(word);
+});
+
+Cypress.Commands.add("nameButton", (name) => {
+  cy.contains("button", name).click();
+});
+
+Cypress.Commands.add("getEleBySel", (elem) => {
+  cy.get(`[data-cy=${elem}`);
+});
+
+Cypress.Commands.add("addWord", (polish, english) => {
+  cy.getEleBySel("add-item-button").click();
+  cy.get("input[name='polish']").type(polish);
+  cy.get("input[name='english']").type(english);
+  cy.contains("button", "add").click();
+});
+
+Cypress.Commands.add("getDeleteWord", () => {
+  cy.getEleBySel("hamburger-menu").click();
+  cy.contains("a", "Words list").click();
+});
+
+Cypress.Commands.add("searchAndDeleteWord", (word) => {
+  cy.get("[type='Search']").type(word);
+  cy.getEleBySel("delete-word-button").click();
+  cy.contains("button", "DO IT!").click();
+  cy.get("[type='Search']").clear();
+});
