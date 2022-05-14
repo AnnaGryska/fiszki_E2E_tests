@@ -1,4 +1,10 @@
 describe("spellingCheck", () => {
+  it("should add word", () => {
+    cy.addWord("kot", "cat");
+    cy.addWord("pies", "dog");
+    cy.addWord("koń", "horse");
+  });
+
   it("should get spelling check page", () => {
     cy.getEleBySel("hamburger-menu").click();
     cy.contains("a", "Spelling check").click();
@@ -30,5 +36,12 @@ describe("spellingCheck", () => {
         expect($p2.text()).not.to.eq(word);
       });
     });
+  });
+  it("should delete word", () => {
+    cy.getEleBySel("hamburger-menu").click();
+    cy.contains("a", "Words list").click();
+    cy.searchAndDeleteWord("kot");
+    cy.searchAndDeleteWord("pies");
+    cy.searchAndDeleteWord("koń");
   });
 });
